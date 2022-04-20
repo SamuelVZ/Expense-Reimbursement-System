@@ -1,0 +1,66 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+#login {
+    width: 20%;
+    margin: auto;
+    text-align: center;
+}
+
+#filterButtons {
+    width: 40%;
+    margin: auto;
+    text-align: center;
+}
+
+#reimbursementTableDiv {
+    margin: auto;
+    text-align: center;
+}
+
+.form-input {
+    margin: 20px;
+}
+
+#title>is-1 {
+    justify-content: center;
+}
+
+#table is-striped td {
+    text-align: center;
+}
+
+#table is-striped th {
+    padding: 20px;
+    line-height: 15px;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    background-color: #5C9EAD;
+    justify-content: flex-end;
+}
+
+nav a {
+    background-color: #EEEEEE;
+    padding: 20px;
+    margin-right: 20px;
+    text-decoration: none;
+    color: #E39774;
+}
+
+.employee-grid {
+    display: grid;
+    grid-template-areas: "table table table form"
+}
+
+.employee-grid #reimbursements-tbl {
+    grid-area: table;
+}
+
+.employee-grid #submitReimbursementDiv {
+    grid-area: form;
+}
+
+.employee-grid #submitReimbursementDiv>div {
+    margin: 20px;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Page</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+
+        <div class="buttons">
+            <a href="#" id="logout-btn" class="button is-danger">Logout</a>
+        </div>
+
+    </nav>
+
+    <h1 id="h1emp" class="title is-1 has-text-centered"></h1>
+
+    <div class="employee-grid ">
+
+        <div id="reimbursementTableDiv" class="box">
+            <h2 class="title is-2 has-text-centered">Reimbursements</h2>
+
+            <div id="filterButtons" class="box has-text-centered has-background-warning-light">
+                <label class="label">Filter by status</label>
+                <button id="clear-btn" class="button is-info has-text-centered">Clear Filter</button>
+                <button id="pending-btn" class="button is-info has-text-centered">Pending</button>
+                <button id="approved-btn" class="button is-info has-text-centered">Approved</button>
+                <button id="denied-btn" class="button is-info has-text-centered">Denied</button>
+            </div>
+
+
+            <div class="box has-background-success-light">
+                <table id="reimbursements-tbl" class="table is-striped ">
+                    <thead>
+                        <th class="has-text-centered">Reimbursement id</th>
+                        <th class="has-text-centered">Amount</th>
+                        <th class="has-text-centered">Date Submitted</th>
+                        <th class="has-text-centered">Date Resolved</th>
+                        <th class="has-text-centered">Description</th>
+                        <th class="has-text-centered">Employee Username</th>
+                        <th class="has-text-centered">Manager Username</th>
+                        <th class="has-text-centered">status</th>
+                        <th class="has-text-centered">Type</th>
+                        <th class="has-text-centered">Image</th>
+                    </thead>
+
+                    <tbody>
+
+                    </tbody>
+
+                </table>
+            </div>
+
+
+
+
+
+        </div>
+
+        <div id="submitReimbursementDiv" class="box has-background-warning-light">
+
+
+
+
+
+            <h2 class="title is-2 has-text-centered">Submit Reimbursement</h2>
+            <div class="field">
+                <label for="amount-input" class="label">Amount: </label>
+                <input type="number" id="amount-input" class="input">
+            </div>
+
+            <div class="field">
+                <label for="description-input" class="label">Description: </label>
+                <input type="text" id="description-input" class="input">
+            </div>
+
+            <div class="field">
+                <label for="type-input" class="label">Type id: </label>
+                <input type="number" id="type-input" class="input">
+            </div>
+
+            <div class="field">
+                <label for="image-input" class="label">Reimbursement Ticket: </label>
+                <input type="file" id="image-input" class="input">
+            </div>
+
+            <div class="field">
+                <button id="submit-btn" class="button is-primary">Submit</button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="employee-page.js"></script>
+</body>
+
+</html>
