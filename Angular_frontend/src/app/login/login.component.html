@@ -1,4 +1,4 @@
-<div id="login" class="box has-background-primary-light">
+<!-- <div id="login" class="box has-background-primary-light">
 
 
     <h1 class="title is-1 has-text-centered">Login</h1>
@@ -17,4 +17,24 @@
     <p id="error-msg"></p>
 
 
-</div>
+</div> -->
+<mat-card class="box has-background-primary-light">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Login</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form #authForm="ngForm" (ngSubmit)="login(authForm)">
+            <mat-form-field>
+                <input matInput type="text" name="username" id="username" placeholder="Username" ngModel required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password" name="password" id="password" placeholder="Password" ngModel required>
+            </mat-form-field>
+            <div>
+                <button mat-raised-button type="submit" [disabled]="!authForm.valid ">Login</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
