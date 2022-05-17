@@ -27,10 +27,16 @@ export class LoginComponent implements OnInit {
     this.loginService.login(username, password).subscribe({
 
       next: (v) => {
-        localStorage.setItem('jwt', v.body.jwt);
-        localStorage.setItem('userId', v.body.userId);
+        localStorage.setItem('jwt', v.headers.get('Token'));
+        localStorage.setItem('userId', v.body.id);
+        localStorage.setItem('user_role', v.body.role);
+        localStorage.setItem('username', v.body.username);
         //this.router.navigate(['/dashboard']);
+        console.log(localStorage.getItem('jwt'));
         console.log(localStorage.getItem('userId'));
+        console.log(localStorage.getItem('user_role'));
+        console.log(localStorage.getItem('username'));
+        //console.log(v);
       }
 
     });
