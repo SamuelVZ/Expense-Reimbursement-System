@@ -14,12 +14,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    NavBarComponent
+    NavBarComponent,
+    UserDashboardComponent,
+    ManagerDashboardComponent
   ],
   imports: [
     BrowserModule,

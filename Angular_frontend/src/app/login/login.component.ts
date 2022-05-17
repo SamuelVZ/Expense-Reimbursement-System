@@ -31,12 +31,14 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userId', v.body.id);
         localStorage.setItem('user_role', v.body.role);
         localStorage.setItem('username', v.body.username);
-        //this.router.navigate(['/dashboard']);
-        console.log(localStorage.getItem('jwt'));
-        console.log(localStorage.getItem('userId'));
-        console.log(localStorage.getItem('user_role'));
-        console.log(localStorage.getItem('username'));
+        //console.log(localStorage.getItem('jwt'));
         //console.log(v);
+
+        if(localStorage.getItem('user_role') == 'manager'){
+          this.router.navigate(['/manager-dashboard']);
+        } else if(localStorage.getItem('user_role') == 'employee'){
+          this.router.navigate(['/user-dashboard']);
+        }
       }
 
     });
