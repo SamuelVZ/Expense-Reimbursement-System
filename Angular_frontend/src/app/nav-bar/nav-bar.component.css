@@ -9,8 +9,5 @@ a {
 
 #logout {
     cursor: pointer;
-}
-
-.cart:hover {
-    cursor: pointer;
+    text-align: center;
 }
