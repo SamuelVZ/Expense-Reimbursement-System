@@ -9,5 +9,8 @@ a {
 
 #logout {
     cursor: pointer;
-    text-align: center;
+}
+
+#dashboard {
+    cursor: pointer;
 }

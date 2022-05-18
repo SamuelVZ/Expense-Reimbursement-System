@@ -12,6 +12,7 @@ export class NavBarComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+
   }
 
   ngDoCheck(): void {
@@ -26,6 +27,14 @@ export class NavBarComponent implements OnInit {
     localStorage.removeItem("user_role");
     localStorage.removeItem("username");
     this.logged = false;
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
+  }
+
+  dashboard():void {
+    if(localStorage.getItem('user_role') == 'manager'){
+      this.router.navigate(['/manager-dashboard']);
+    } else if(localStorage.getItem('user_role') == 'employee'){
+      this.router.navigate(['/user-dashboard']);
+    }
   }
 }

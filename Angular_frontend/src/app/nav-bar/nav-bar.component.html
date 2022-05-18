@@ -1,4 +1,5 @@
 <mat-toolbar fxLayout="row" fxLayoutGap="20px">
-    <div fxFlex="auto" fxFlexAlign="right"><a>Expense Reimbursement System</a></div>
-    <div id="logout" fxFlex fxLayoutAlign="flex-end center" *ngIf="logged" (click)="logout()">Logout</div>
+    <div fxFlex="auto" fxFlexAlign="right">Expense Reimbursement System</div>
+    <div id="dashboard" class="navbar-end" *ngIf="logged" (click)="dashboard()">Dashboard</div>
+    <div id="logout" class="navbar-end" *ngIf="logged" (click)="logout()">Logout</div>
 </mat-toolbar>

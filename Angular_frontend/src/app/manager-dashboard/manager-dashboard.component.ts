@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManagerDashboardComponent implements OnInit {
 
+  welcome!: string;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.welcome = 'Welcome back ' + localStorage.getItem('username');
+    this.populateTable();
+
   }
 
+
+
+  populateTable(): void{
+
+  }
 }
