@@ -1,3 +1,26 @@
 h1 {
     margin: 20px;
 }
+
+div {
+    margin: auto;
+    display: table;
+}
+
+table {
+    margin: auto;
+}
+
+#table is-striped tr {
+    text-align: center;
+}
+
+#table is-striped th {
+    padding: 20px;
+    line-height: 15px;
+    text-align: center;
+}
+
+img {
+    height: 200px;
+}

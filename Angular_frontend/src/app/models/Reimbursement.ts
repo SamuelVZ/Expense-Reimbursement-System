@@ -1,6 +1,6 @@
 export interface Reimbursement{
   id: number;
-  amount: string;
+  amount: number;
   dateSubmitted: string;
   dateResolved: string;
   description: string;
