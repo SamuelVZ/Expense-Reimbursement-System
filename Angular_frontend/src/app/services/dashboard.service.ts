@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Reimbursement } from '../models/Reimbursement';
@@ -22,4 +22,14 @@ export class DashboardService {
   populateManagerTable(): Observable<Reimbursement[]>{
     return this.httpClient.get<Reimbursement[]>(this.URLm, { 'headers': this.headers });
   }
+
+
+  updateStatus(id: number, statusId: number): Observable<any>{
+
+    let params = new HttpParams().set('statusId', statusId);
+    const options = {params: params, 'headers': this.headers};
+
+    return this.httpClient.patch(`${this.URLm}/${id}`, null, options);
+  }
+
 }

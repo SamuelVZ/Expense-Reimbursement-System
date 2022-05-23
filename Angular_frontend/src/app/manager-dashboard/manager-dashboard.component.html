@@ -28,13 +28,14 @@
                 <td class="has-text-centered is-vcentered"> {{item.typeName}} </td>
                 <td class="has-text-centered is-vcentered"> <img [src]="fillImage(item.id)" alt="Image"> </td>
                 <td *ngIf="!item.managerUsername" class="has-text-centered is-vcentered">
-                    <label for="status">Update status:</label>
-                    <select id="status" name="status">
-                    <option value="1">pending</option>
-                    <option value="2">approved</option>
-                    <option value="3">denied</option>
+                    <label for="status">Update status </label>
+                    <select id="status" name="status" (change)="selectedOption($event)">
+                      <option>Select an Option </option>
+                      <option value=1>pending</option>
+                      <option value=2>approved</option>
+                      <option value=3>denied</option>
                   </select>
-                    <button class="button is-link">Update Status</button>
+                    <button class="button is-link" (click)="updateStatus(item.id)">Update Status</button>
                 </td>
         </tbody>
     </table>
