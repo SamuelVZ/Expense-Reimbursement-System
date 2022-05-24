@@ -8,7 +8,7 @@ import { DashboardService } from '../services/dashboard.service';
   templateUrl: './manager-dashboard.component.html',
   styleUrls: ['./manager-dashboard.component.css']
 })
-export class ManagerDashboardComponent implements OnInit {
+export class ManagerDashboardComponent implements OnInit{
 
   welcome!: string;
   reimbursements!: Observable<Reimbursement[]>;
@@ -21,7 +21,9 @@ export class ManagerDashboardComponent implements OnInit {
 
   }
 
+
   populateTable(): void{
+    console.log(localStorage);
     this.reimbursements = this.dashboardService.populateManagerTable();
   }
 
@@ -37,8 +39,6 @@ export class ManagerDashboardComponent implements OnInit {
     this.dashboardService.updateStatus(id, this.statusSelected).subscribe(
       next => {
         this.populateTable();
-        console.log("aa")
-      }
-    );
+      });
   }
 }

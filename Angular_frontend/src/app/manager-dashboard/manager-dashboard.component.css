@@ -12,6 +12,10 @@ table {
     margin: auto;
 }
 
+select {
+    margin: 9PX;
+}
+
 #table is-striped tr {
     text-align: center;
 }
