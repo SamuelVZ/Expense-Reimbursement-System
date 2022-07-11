@@ -1,42 +1,69 @@
 <h1 class="title is-1 has-text-centered"> {{ welcome }}</h1>
+<div class="employee-grid ">
+    <div id="reimbursements-tbl" class="box has-background-success-light">
+        <table class="table is-striped">
+            <thead>
+                <th class="has-text-centered">Reimbursement id</th>
+                <th class="has-text-centered">Amount</th>
+                <th class="has-text-centered">Date Submitted</th>
+                <th class="has-text-centered">Date Resolved</th>
+                <th class="has-text-centered">Description</th>
+                <th class="has-text-centered">Employee Username</th>
+                <th class="has-text-centered">Manager Username</th>
+                <th class="has-text-centered">status</th>
+                <th class="has-text-centered">Type</th>
+                <th class="has-text-centered">Image</th>
+            </thead>
 
-<div class="box has-background-success-light">
-    <table id="reimbursements-tbl" class="table is-striped">
-        <thead>
-            <th class="has-text-centered">Reimbursement id</th>
-            <th class="has-text-centered">Amount</th>
-            <th class="has-text-centered">Date Submitted</th>
-            <th class="has-text-centered">Date Resolved</th>
-            <th class="has-text-centered">Description</th>
-            <th class="has-text-centered">Employee Username</th>
-            <th class="has-text-centered">Manager Username</th>
-            <th class="has-text-centered">status</th>
-            <th class="has-text-centered">Type</th>
-            <th class="has-text-centered">Image</th>
-        </thead>
+            <tbody>
+                <tr *ngFor="let item of (reimbursements | async)">
+                    <td class="has-text-centered is-vcentered"> {{item.id}} </td>
+                    <td class="has-text-centered is-vcentered"> {{item.amount}} </td>
+                    <td class="has-text-centered is-vcentered"> {{item.dateSubmitted}} </td>
+                    <td class="has-text-centered is-vcentered"> {{item.dateResolved}} </td>
+                    <td class="has-text-centered is-vcentered"> {{item.description}} </td>
+                    <td class="has-text-centered is-vcentered"> {{item.employeeUsername}} </td>
+                    <td class="has-text-centered is-vcentered"> {{item.managerUsername}} </td>
+                    <td class="has-text-centered is-vcentered"> {{item.statusName}} </td>
+                    <td class="has-text-centered is-vcentered"> {{item.typeName}} </td>
+                    <td class="has-text-centered is-vcentered"> <img [src]="fillImage(item.id)" alt="Image"> </td>
+            </tbody>
+        </table>
+    </div>
 
-        <tbody>
-            <tr *ngFor="let item of (reimbursements | async)">
-                <td class="has-text-centered is-vcentered"> {{item.id}} </td>
-                <td class="has-text-centered is-vcentered"> {{item.amount}} </td>
-                <td class="has-text-centered is-vcentered"> {{item.dateSubmitted}} </td>
-                <td class="has-text-centered is-vcentered"> {{item.dateResolved}} </td>
-                <td class="has-text-centered is-vcentered"> {{item.description}} </td>
-                <td class="has-text-centered is-vcentered"> {{item.employeeUsername}} </td>
-                <td class="has-text-centered is-vcentered"> {{item.managerUsername}} </td>
-                <td class="has-text-centered is-vcentered"> {{item.statusName}} </td>
-                <td class="has-text-centered is-vcentered"> {{item.typeName}} </td>
-                <td class="has-text-centered is-vcentered"> <img [src]="fillImage(item.id)" alt="Image"> </td>
-                <td *ngIf="!item.managerUsername" class="has-text-centered is-vcentered">
-                    <label for="status">Update status </label>
-                    <select id="status" name="status" (change)="selectedOption($event)">
-                      <option>Select an Option </option>
-                      <option value=1>pending</option>
-                      <option value=2>approved</option>
-                      <option value=3>denied</option>
-                  </select>
-                    <button class="button is-link" (click)="updateStatus(item.id)">Update Status</button>
-                </td>
-        </tbody>
-    </table>
+    <mat-card id="submitReimbursementDiv" class="box has-background-warning-light">
+        <mat-card-header>
+            <mat-card-title>
+                <h2 class="title is-2 has-text-centered">Submit Reimbursement</h2>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form #authForm="ngForm" (ngSubmit)="submitReimbursement(authForm)">
+                <mat-form-field>
+                    <input matInput type="number" name="amount" id="amount" placeholder="Amount" ngModel required>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="text" name="description" id="description" placeholder="Description" ngModel required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-select id="typeId" name="typeId" placeholder="Select Reimbursement Type" ngModel required>
+                        <mat-option value=1>Lodging</mat-option>
+                        <mat-option value=2>Travel</mat-option>
+                        <mat-option value=3>Food</mat-option>
+                        <mat-option value=4>Other</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <ngx-mat-file-input [accept]="acept" name="image" id="image" placeholder="Reimbursement Ticket" ngModel>
+                        <mat-icon ngxMatFileInputIcon>folder</mat-icon>
+                    </ngx-mat-file-input>
+                </mat-form-field>
+                <div>
+                    <button mat-raised-button type="submit" [disabled]="!authForm.valid ">Submit Reimbursement</button>
+                </div>
+            </form>
+        </mat-card-content>
+
+
+    </mat-card>
 </div>

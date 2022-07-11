@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Reimbursement } from '../models/Reimbursement';
 import { DashboardService } from '../services/dashboard.service';
@@ -13,6 +14,7 @@ export class UserDashboardComponent implements OnInit {
   reimbursements!: Observable<Reimbursement[]>;
   statusSelected!: number;
   employeeId!: string;
+  acept: string = ".png, .jpg, .jpeg";
 
   constructor(private dashboardService: DashboardService) { }
 
@@ -31,14 +33,22 @@ export class UserDashboardComponent implements OnInit {
     return 'http://localhost:8081/reimbursements/' + id + '/image';
   }
 
-  selectedOption(event: any){
-    this.statusSelected = event.target.value;
+  submitReimbursement(form: NgForm){
+
+    const formData = new FormData;
+    formData.append('amount',form.value.amount);
+    formData.append('description',form.value.description);
+    formData.append('typeId',form.value.typeId);
+    formData.append('image',form.value.image);
+
+    this.dashboardService.submitReimbursement(formData, this.employeeId).subscribe({
+
+      next: () => {
+        this.populateTable();
+      }
+
+    });
+     form.reset();
   }
 
-  updateStatus(id: number){
-    this.dashboardService.updateStatus(id, this.statusSelected).subscribe(
-      next => {
-        this.populateTable();
-      });
-  }
 }

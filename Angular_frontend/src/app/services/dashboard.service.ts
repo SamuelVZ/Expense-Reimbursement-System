@@ -34,4 +34,12 @@ export class DashboardService {
     return this.httpClient.patch(`${this.URLm}/reimbursements/${id}`, null, options);
   }
 
+  submitReimbursement(formData: FormData, employeeId: string): Observable<any>{
+    console.log(formData);
+    console.log(this.headers);
+    //this.headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('jwt')}`);
+    return this.httpClient.post(`${this.URLm}/employees/${employeeId}/reimbursements`,
+      formData,
+      { 'headers': this.headers });
+  }
 }
